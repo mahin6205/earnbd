@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout - Earning Bd</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Earning Bd</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#">Shop</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="checkout">
+    <h2>Checkout</h2>
+    <p>Please send payment to our Bkash number: <strong>01810207271</strong></p>
+    <form class="checkout-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="phone">Your Phone Number</label>
+      <input type="text" id="phone" name="phone" required />
+
+      <label for="pack">Pack Name</label>
+      <select id="pack" name="pack">
+        <option>Starter Pack - 150 BDT</option>
+        <option>Pro Pack - 300 BDT</option>
+        <option>Elite Pack - 500 BDT</option>
+      </select>
+
+      <label for="trxid">Bkash Transaction ID</label>
+      <input type="text" id="trxid" name="trxid" required />
+
+      <button type="submit">Place Order</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Earning Bd. All rights reserved.</p>
+  </footer>
+</body>
+</html>
