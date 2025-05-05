@@ -18,10 +18,56 @@
     </nav>
   </header>
 
-  <section class="checkout">
-    <h2>Checkout</h2>
-    <p>Please send payment to our Bkash number: <strong>01810207271</strong></p>
-    <form class="checkout-form">
+  <form id="order-form">
+  <label for="name">Full Name:</label><br>
+  <input type="text" id="name" name="name" required><br><br>
+
+  <label for="phone">Phone Number:</label><br>
+  <input type="tel" id="phone" name="phone" required><br><br>
+
+  <label for="pack">Select Pack:</label><br>
+  <select id="pack" name="pack" required>
+    <option value="">-- Choose a pack --</option>
+    <option value="Pack 1 - ৳50">Pack 1 - ৳50</option>
+    <option value="Pack 2 - ৳100">Pack 2 - ৳100</option>
+    <option value="Pack 3 - ৳200">Pack 3 - ৳200</option>
+  </select><br><br>
+
+  <label for="transaction">Bkash Transaction ID:</label><br>
+  <input type="text" id="transaction" name="transaction" required><br><br>
+
+  <button type="submit">Submit Order</button>
+</form>
+
+<p id="response"></p>
+
+<script>
+document.getElementById('order-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    phone: form.phone.value,
+    pack: form.pack.value,
+    transaction: form.transaction.value,
+  };
+
+  fetch('https://script.google.com/macros/s/AKfycbxbiWiK8tKwdrP9IGyBMyMeshsUMg8STDoQZNS7XHey0H2FnDUNSUr7n2iJez9znH8k/exec', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res => res.text())
+  .then(msg => {
+    document.getElementById('response').innerText = 'Order submitted successfully!';
+    form.reset();
+  })
+  .catch(err => {
+    document.getElementById('response').innerText = 'There was an error. Please try again.';
+  });
+});
+</script>
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" required />
 
