@@ -7,7 +7,33 @@
   <title>Checkout - Earning Bd</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body><script>
+document.getElementById('order-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    phone: form.phone.value,
+    pack: form.pack.value,
+    transaction: form.transaction.value,
+  };
+
+  fetch('https://script.google.com/macros/s/AKfycbxbiWiK8tKwdrP9IGyBMyMeshsUMg8STDoQZNS7XHey0H2FnDUNSUr7n2iJez9znH8k/exec', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res => res.text())
+  .then(msg => {
+    document.getElementById('response').innerText = 'Order submitted successfully!';
+    form.reset();
+  })
+  .catch(err => {
+    document.getElementById('response').innerText = 'There was an error. Please try again.';
+  });
+});
+</script>
   <header>
     <h1>Earning Bd</h1>
     <nav>
